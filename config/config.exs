@@ -17,6 +17,11 @@ config :bookshelf, BookshelfWeb.Endpoint,
   render_errors: [view: BookshelfWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Bookshelf.PubSub, adapter: Phoenix.PubSub.PG2]
 
+config :bookshelf, BookshelfWeb.Admin,
+  username: "admin",
+  password: "password",
+  realm: "Simple Bookshelf"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

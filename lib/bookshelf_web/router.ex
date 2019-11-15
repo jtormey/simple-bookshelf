@@ -9,6 +9,10 @@ defmodule BookshelfWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :admin_browser do
+    plug BasicAuth, use_config: {:bookshelf, BookshelfWeb.Admin}
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -17,6 +21,12 @@ defmodule BookshelfWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+  end
+
+  scope "/~/admin", BookshelfWeb do
+    pipe_through :browser
+    pipe_through :admin_browser
+
     resources "/accounts", AccountController
   end
 end
