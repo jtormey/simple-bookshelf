@@ -9,6 +9,10 @@
   <%= text_input f, :username %>
   <%= error_tag f, :username %>
 
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
   <%= label f, :airtable_api_key %>
   <%= text_input f, :airtable_api_key %>
   <%= error_tag f, :airtable_api_key %>

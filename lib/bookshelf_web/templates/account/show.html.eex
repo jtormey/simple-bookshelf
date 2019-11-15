@@ -8,12 +8,17 @@
   </li>
 
   <li>
-    <strong>Airtable api key:</strong>
+    <strong>Name:</strong>
+    <%= @account.name %>
+  </li>
+
+  <li>
+    <strong>Airtable API Key:</strong>
     <%= @account.airtable_api_key %>
   </li>
 
   <li>
-    <strong>Airtable base:</strong>
+    <strong>Airtable Base:</strong>
     <%= @account.airtable_base %>
   </li>
 

@@ -4,7 +4,8 @@ defmodule Bookshelf.Repo.Migrations.CreateAccounts do
   def change do
     create table(:accounts, primary_key: false) do
       add :id, :uuid, primary_key: true
-      add :username, :string
+      add :username, :string, null: false
+      add :name, :string
       add :airtable_api_key, :string
       add :airtable_base, :string
 

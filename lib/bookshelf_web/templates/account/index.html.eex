@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Airtable api key</th>
-      <th>Airtable base</th>
+      <th>Name</th>
+      <th>Airtable API Key</th>
+      <th>Airtable Base</th>
 
       <th></th>
     </tr>
@@ -14,6 +15,7 @@
 <%= for account <- @accounts do %>
     <tr>
       <td><%= account.username %></td>
+      <td><%= account.name %></td>
       <td><%= account.airtable_api_key %></td>
       <td><%= account.airtable_base %></td>
 
