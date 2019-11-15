@@ -22,6 +22,7 @@ defmodule BookshelfWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    post "/signup", PageController, :signup
     get "/u/:username", BookListController, :index
   end
 
