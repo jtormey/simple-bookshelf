@@ -10,6 +10,7 @@ defmodule BookshelfWeb.Router do
   end
 
   pipeline :admin_browser do
+    plug :put_layout, {BookshelfWeb.LayoutView, "admin.html"}
     plug BasicAuth, use_config: {:bookshelf, BookshelfWeb.Admin}
   end
 
