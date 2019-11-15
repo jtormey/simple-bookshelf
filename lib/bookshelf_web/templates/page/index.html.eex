@@ -1,15 +1,19 @@
 <div class="w-100 flex justify-center">
   <div class="lg:w-1/2 px-6 mt-32">
 
-    <h1 class="text-4xl font-bold">
-      Bookshelf
-    </h1>
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold">
+        Bookshelf
+      </h1>
 
-    <small class="text-lg font-light">
-      See what everyone's reading, simply.
-    </small>
+      <small class="text-lg font-light">
+        See what everyone's reading, simply.
+      </small>
+    </div>
 
-    <div class="x l:w-2/3 bg-white border rounded p-4 mt-16">
+    <%= render BookshelfWeb.LayoutView, "flash.html", assigns %>
+
+    <div class="x l:w-2/3 bg-white border rounded p-4 mt-8">
     <%= form_for @changeset, Routes.page_path(@conn, :signup), fn f -> %>
       <h2 class="font-bold mb-3">
         Get started
@@ -30,7 +34,7 @@
       </div>
 
       <div class="mb-3">
-        <span>Then, copy</span>
+        <span>Copy</span>
         <a class="text-blue-500 underline" href="<%= @base_template %>" target="_blank" rel="noopener noreferrer">
           this Airtable base</a><span>, and fill out:</span>
       </div>

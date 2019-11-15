@@ -15,7 +15,9 @@ defmodule BookshelfWeb.PageController do
   def signup(conn, %{"account" => account_params}) do
     case Accounts.create_account(account_params) do
       {:ok, %Account{username: username}} ->
-        redirect(conn, to: Routes.book_list_path(conn, :index, username))
+        conn
+        |> put_flash(:info, "Your bookshelf is ready!")
+        |> redirect(to: Routes.book_list_path(conn, :index, username))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "index.html", changeset: changeset, base_template: @base_template)

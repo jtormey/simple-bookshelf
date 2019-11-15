@@ -1,6 +1,8 @@
 defmodule BookshelfWeb.BookListController do
   use BookshelfWeb, :controller
 
+  require Logger
+
   alias Bookshelf.{Accounts, AirtableApi}
 
   def index(conn, %{"username" => username}) do
@@ -8,11 +10,22 @@ defmodule BookshelfWeb.BookListController do
       nil ->
         render(conn, "not_found.html", username: username)
       account ->
-        {:ok, books} = AirtableApi.get_records!("Books", account)
+        case AirtableApi.get_records!("Books", account) do
+          {:ok, books} ->
+            sections = Enum.group_by books, fn record ->
+              get_in(record, ["fields", "Status"])
+            end
 
-        categories = Enum.group_by books, fn r -> get_in(r, ["fields", "Status"]) end
+            render(conn, "index.html", account: account, sections: sections)
 
-        render conn, "index.html", account: account, categories: categories
+          {:error, reason} ->
+            Logger.warn("AirtableApi failed with reason: #{inspect(reason)}")
+
+            conn
+            |> put_flash(:error, "Failed to connect to Airtable! Did you enter your Airtable API key and base correctly?")
+            |> render("index.html", account: account, sections: [])
+        end
+
     end
   end
 end

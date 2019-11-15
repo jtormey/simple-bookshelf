@@ -13,8 +13,12 @@ defmodule Bookshelf.AirtableApi do
       "Authorization": "Bearer #{account.airtable_api_key}"
     ]
 
-    get!("/#{account.airtable_base}/#{table}?#{params}", headers)
-    |> handle_response()
+    try do
+      get!("/#{account.airtable_base}/#{table}?#{params}", headers)
+      |> handle_response()
+    rescue
+      _error -> {:error, :failed}
+    end
   end
 
   def handle_response(%HTTPoison.Response{body: body}) do
