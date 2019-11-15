@@ -1,3 +1,33 @@
-<h1>
-  username: <%= @account.username %>
-</h1>
+<div class="w-100 flex justify-center">
+  <div class="w-1/2 mb-32">
+
+    <h1 class="text-3xl font-bold mt-24">
+      Bookshelf
+    </h1>
+
+    <%= for {status, books} <- @categories do %>
+    <div>
+      <div class="relative inline-block rounded-full mt-8 mb-4" style="background: <%= color_for_status(status) %>;">
+        <span class="opacity-75 text-sm font-semibold px-4">
+          <%= status %>
+        </span>
+
+        <div class="absolute" style="top: -1px; left: -24px;">
+          <span class="text-sm text-gray-500 font-bold">
+            <%= length(books) %>
+          </span>
+        </div>
+      </div>
+
+      <%= for %{"fields" => fields} <- books do %>
+      <div class="border rounded bg-white px-4 py-2 mb-2">
+        <a class="underline" href="<%= fields["Amazon Link"] %>" target="_blank" rel="noopener noreferrer">
+          <%= fields["Name"] %>
+        </a>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+
+  </div>
+</div>

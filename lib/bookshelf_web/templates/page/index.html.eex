@@ -1,12 +1,10 @@
-<div class="bg-gray-100 h-full">
-  <div class="container flex justify-center">
-    <div class="w-1/2 mt-32">
-      <h1 class="text-4xl font-bold">
-        Bookshelf
-      </h1>
-      <small class="text-lg font-light">
-        See what everyone's reading.
-      </small>
-    </div>
+<div class="w-100 flex justify-center">
+  <div class="w-1/2 mt-32">
+    <h1 class="text-4xl font-bold">
+      Bookshelf
+    </h1>
+    <small class="text-lg font-light">
+      See what everyone's reading.
+    </small>
   </div>
 </div>
