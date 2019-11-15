@@ -22,11 +22,17 @@
         </span>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-6">
         <%= text_input f, :name, placeholder: "Your first name", class: "border rounded px-4 py-1 w-full" %>
         <span class="text-red-500">
           <%= error_tag f, :name %>
         </span>
+      </div>
+
+      <div class="mb-3">
+        <span>Then, copy</span>
+        <a class="text-blue-500 underline" href="<%= @base_template %>" target="_blank" rel="noopener noreferrer">
+          this Airtable base</a><span>, and fill out:</span>
       </div>
 
       <div class="mb-3">
@@ -36,14 +42,14 @@
         </span>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-6">
         <%= text_input f, :airtable_base, placeholder: "Airtable base ID", class: "border rounded px-4 py-1 w-full" %>
         <span class="text-red-500">
           <%= error_tag f, :airtable_base %>
         </span>
       </div>
 
-      <%= submit "Submit", class: "border-0 rounded bg-blue-500 text-white px-4 py-2" %>
+      <%= submit "Sign up", class: "border-0 rounded bg-blue-500 text-white px-4 py-2" %>
     <% end %>
     </div>
   </div>
