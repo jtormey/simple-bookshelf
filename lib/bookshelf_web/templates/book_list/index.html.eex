@@ -1,40 +1,50 @@
-<div class="w-100 flex justify-center">
-  <div class="w-1/2 mb-32">
-
-    <h1 class="text-3xl font-bold mt-24">
+<div class="lg:flex flex-col items-center">
+  <div class="lg:w-1/2 px-6 py-12">
+    <h1 class="text-3xl font-bold lg:mt-12">
       <%= @account.name %>'s Bookshelf
     </h1>
 
     <%= for {status, books} <- @categories do %>
     <div>
 
-      <div class="relative inline-block rounded-full mt-8 mb-4" style="background: <%= color_for_status(status) %>;">
-        <span class="opacity-75 text-sm font-semibold px-4">
-          <%= status %>
-        </span>
+      <div class="relative flex justify-between mt-8 mb-4">
+        <div class="inline-block rounded-full" style="background: <%= color_for_status(status) %>;">
+          <span class="opacity-75 text-sm font-semibold px-4">
+            <%= status %>
+          </span>
+        </div>
 
-        <div class="absolute" style="top: -1px; left: -24px;">
-          <span class="text-sm text-gray-500 font-bold">
+        <div class="lg:absolute" style="top: 0; left: -8px;">
+          <span class="lg:absolute text-sm text-gray-500 font-bold" style="right: 0;">
             <%= length(books) %>
           </span>
         </div>
       </div>
 
       <%= for %{"fields" => fields} <- books do %>
-      <div class="flex justify-between border rounded bg-white px-4 py-2 mb-2">
-        <div class="w-2/3 truncate">
-          <a class="underline" href="<%= fields["Amazon Link"] %>" target="_blank" rel="noopener noreferrer">
+      <div class="relative lg:block flex flex-row border rounded bg-white px-4 py-2 mb-2">
+
+        <div class="lg:w-full w-2/3 flex-grow flex lg:flex-row flex-col justify-between">
+          <a class="truncate underline" href="<%= fields["Amazon Link"] %>" target="_blank" rel="noopener noreferrer">
             <%= fields["Name"] %>
           </a>
+          <span class="text-gray-600 font-light whitespace-no-wrap">
+            <%= description_for_book(status, fields) %>
+          </span>
         </div>
-        <span class="text-gray-600 font-light">
-          <%= description_for_book(status, fields) %>
-        </span>
+
+        <%= if fields["Rating"] != nil do %>
+        <div class="lg:absolute" style="top: 8px; left: -8px;">
+          <span class="lg:absolute text-sm" style="right: 0;">
+            <%= Enum.map 1..fields["Rating"], fn _ -> "⭐️" end %>
+          </span>
+        </div>
+        <% end %>
+
       </div>
       <% end %>
 
     </div>
     <% end %>
-
   </div>
 </div>
