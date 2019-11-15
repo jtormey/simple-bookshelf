@@ -22,9 +22,10 @@ defmodule BookshelfWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/~/:username", BookListController, :index
   end
 
-  scope "/~/admin", BookshelfWeb do
+  scope "/_/admin", BookshelfWeb do
     pipe_through :browser
     pipe_through :admin_browser
 
