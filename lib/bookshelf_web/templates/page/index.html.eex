@@ -1,42 +1,42 @@
 <div class="w-100 flex justify-center">
-  <div class="w-1/2 mt-32">
+  <div class="lg:w-1/2 px-6 mt-32">
 
     <h1 class="text-4xl font-bold">
       Bookshelf
     </h1>
 
     <small class="text-lg font-light">
-      See what everyone's reading.
+      See what everyone's reading, simply.
     </small>
 
-    <div class="w-2/3 bg-white border rounded py-4 px-6 mt-16">
+    <div class="x l:w-2/3 bg-white border rounded p-4 mt-16">
     <%= form_for @changeset, Routes.page_path(@conn, :signup), fn f -> %>
-      <h2 class="font-bold mb-4">
+      <h2 class="font-bold mb-3">
         Get started
       </h2>
 
-      <div class="mb-4">
+      <div class="mb-3">
         <%= text_input f, :username, placeholder: "A username", class: "border rounded px-4 py-1 w-full" %>
         <span class="text-red-500">
           <%= error_tag f, :username %>
         </span>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-3">
         <%= text_input f, :name, placeholder: "Your first name", class: "border rounded px-4 py-1 w-full" %>
         <span class="text-red-500">
           <%= error_tag f, :name %>
         </span>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-3">
         <%= password_input f, :airtable_api_key, placeholder: "Airtable API key", class: "border rounded px-4 py-1 w-full" %>
         <span class="text-red-500">
           <%= error_tag f, :airtable_api_key %>
         </span>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-3">
         <%= text_input f, :airtable_base, placeholder: "Airtable base ID", class: "border rounded px-4 py-1 w-full" %>
         <span class="text-red-500">
           <%= error_tag f, :airtable_base %>
