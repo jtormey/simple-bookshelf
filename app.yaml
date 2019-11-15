@@ -1,0 +1,11 @@
+env: flex
+runtime: gs://elixir-runtime/elixir.yaml
+
+runtime_config:
+  release_app: bookshelf
+
+env_variables:
+  MIX_ENV: prod
+
+beta_settings:
+  cloud_sql_instances: solar-vertex-259118:us-central1:bookshelf-postgres-prod
