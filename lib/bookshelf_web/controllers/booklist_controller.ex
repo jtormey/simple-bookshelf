@@ -8,7 +8,10 @@ defmodule BookshelfWeb.BookListController do
   def index(conn, %{"username" => username}) do
     case Accounts.get_account_by(username: username) do
       nil ->
-        render(conn, "not_found.html", username: username)
+        conn
+        |> put_flash(:info, "There is no account with username \"#{username}\".")
+        |> render("not_found.html")
+
       account ->
         case AirtableApi.get_records!("Books", account) do
           {:ok, books} ->
