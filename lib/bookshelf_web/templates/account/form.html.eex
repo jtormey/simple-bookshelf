@@ -1,0 +1,23 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :username %>
+  <%= text_input f, :username %>
+  <%= error_tag f, :username %>
+
+  <%= label f, :airtable_api_key %>
+  <%= text_input f, :airtable_api_key %>
+  <%= error_tag f, :airtable_api_key %>
+
+  <%= label f, :airtable_base %>
+  <%= text_input f, :airtable_base %>
+  <%= error_tag f, :airtable_base %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

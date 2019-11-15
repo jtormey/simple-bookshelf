@@ -1,0 +1,23 @@
+<h1>Show Account</h1>
+
+<ul>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @account.username %>
+  </li>
+
+  <li>
+    <strong>Airtable api key:</strong>
+    <%= @account.airtable_api_key %>
+  </li>
+
+  <li>
+    <strong>Airtable base:</strong>
+    <%= @account.airtable_base %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.account_path(@conn, :edit, @account) %></span>
+<span><%= link "Back", to: Routes.account_path(@conn, :index) %></span>
