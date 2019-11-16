@@ -24,7 +24,7 @@ defmodule Bookshelf.AirtableApi do
   def handle_response(%HTTPoison.Response{body: body}) do
     case body do
       %{"records" => records} -> {:ok, records}
-      _otherwise -> {:error, body}
+      %{"error" => error} -> {:error, error}
     end
   end
 

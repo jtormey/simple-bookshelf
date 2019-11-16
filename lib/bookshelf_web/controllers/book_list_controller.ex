@@ -25,17 +25,24 @@ defmodule BookshelfWeb.BookListController do
 
         else
           {:error, :no_records} ->
-            conn
-            |> put_flash(:info, "This user hasn't added any books to their list yet!")
-            |> render("index.html", account: account, sections: [])
+            handle_notice(conn, account, :info, "This user hasn't added any books to their list yet!")
+
+          {:error, "NOT_FOUND"} ->
+            handle_notice(conn, account, :error, "The base ID provided was not found in Airtable.")
+
+          {:error, %{"message" => message}} ->
+            handle_notice(conn, account, :error, "Airtable error: #{message}.")
 
           {:error, reason} ->
             Logger.warn("AirtableApi failed with reason: #{inspect(reason)}")
-
-            conn
-            |> put_flash(:error, "Failed to connect to Airtable! Did you enter your Airtable API key and base correctly?")
-            |> render("index.html", account: account, sections: [])
+            handle_notice(conn, account, :error, "Failed to connect to Airtable.")
         end
     end
+  end
+
+  def handle_notice(conn, account, notice_type, message) do
+    conn
+    |> put_flash(notice_type, message)
+    |> render("index.html", account: account, sections: [])
   end
 end
