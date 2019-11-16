@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body class="bg-gray-100">
-    <div class="container relative">
-      <div class="absolute" style="top: 16px; right: 0;">
+    <div class="container">
+      <div class="absolute px-6" style="top: 16px; right: 0;">
         <a href="<%= Routes.profile_path(@conn, :show) %>">
           <button class="border border-black rounded bg-white text-blackk py-1 px-3">
             Profile

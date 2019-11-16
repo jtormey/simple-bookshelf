@@ -1,4 +1,4 @@
-<div class="w-100 flex justify-center">
+<div class="lg:flex justify-center">
   <div class="lg:w-1/2 px-6 mt-32">
 
     <div class="mb-8">
