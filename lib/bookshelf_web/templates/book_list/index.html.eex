@@ -27,9 +27,16 @@
       <div class="relative lg:block flex flex-row border rounded bg-white px-4 py-2 mb-2">
 
         <div class="lg:w-full w-2/3 flex-grow flex lg:flex-row flex-col justify-between">
-          <a class="truncate underline" href="<%= fields["Amazon Link"] %>" target="_blank" rel="noopener noreferrer">
-            <%= fields["Name"] %>
-          </a>
+          <%= if fields["Link"] != nil do %>
+            <a class="truncate underline" href="<%= fields["Link"] %>" target="_blank" rel="noopener noreferrer">
+              <%= fields["Name"] %>
+            </a>
+          <% else %>
+            <span class="truncate">
+              <%= fields["Name"] %>
+            </span>
+          <% end %>
+
           <span class="text-gray-600 font-light whitespace-no-wrap">
             <%= description_for_book(status, fields) %>
           </span>
