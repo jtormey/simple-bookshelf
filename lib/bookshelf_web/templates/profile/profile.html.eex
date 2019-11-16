@@ -1,0 +1,61 @@
+<div class="w-100 flex justify-center">
+  <div class="lg:w-1/2 px-6 mt-32">
+
+    <h1 class="text-4xl font-bold mb-8">
+      Profile
+    </h1>
+
+    <%= render BookshelfWeb.LayoutView, "flash.html", assigns %>
+
+    <%= form_for @changeset, Routes.profile_path(@conn, :update), fn f -> %>
+    <div class="mt-8 mb-3">
+      <label>
+        Username
+      </label>
+      <%= text_input f, :username, value: @account.username, class: "border rounded px-4 py-1 w-full" %>
+      <span class="text-red-500">
+        <%= error_tag f, :username %>
+      </span>
+    </div>
+
+    <div class="mb-3">
+      <label>
+        Name
+      </label>
+      <%= text_input f, :name, value: @account.name, class: "border rounded px-4 py-1 w-full" %>
+      <span class="text-red-500">
+        <%= error_tag f, :name %>
+      </span>
+    </div>
+
+    <div class="mb-3">
+      <label>
+        Airtable API key
+      </label>
+      <%= password_input f, :airtable_api_key, class: "border rounded px-4 py-1 w-full" %>
+      <span class="text-red-500">
+        <%= error_tag f, :airtable_api_key %>
+      </span>
+    </div>
+
+    <div class="mb-6">
+      <label>
+        Airtable base ID
+      </label>
+      <%= text_input f, :airtable_base, value: @account.airtable_base, class: "border rounded px-4 py-1 w-full" %>
+      <span class="text-red-500">
+        <%= error_tag f, :airtable_base %>
+      </span>
+    </div>
+
+    <%= submit "Update", class: "border-0 rounded bg-blue-500 text-white px-4 py-2" %>
+
+    <a href="<%= Routes.profile_path(@conn, :logout) %>">
+      <button type="button" class="border border-black rounded bg-white text-black px-4 py-2 ml-2">
+        Logout
+      </button>
+    </a>
+    <% end %>
+
+  </div>
+</div>

@@ -35,6 +35,8 @@ defmodule Bookshelf.Accounts do
       ** (Ecto.NoResultsError)
 
   """
+  def get_account(id), do: Repo.get(Account, id)
+
   def get_account!(id), do: Repo.get!(Account, id)
 
   def get_account_by(username: username), do: Repo.get_by(Account, username: username)

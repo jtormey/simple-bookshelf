@@ -1,0 +1,35 @@
+<div class="w-100 flex justify-center">
+  <div class="lg:w-1/2 px-6 mt-32">
+
+    <h1 class="text-4xl font-bold mb-8">
+      Sign in
+    </h1>
+
+    <%= render BookshelfWeb.LayoutView, "flash.html", assigns %>
+
+    <%= form_for @conn, Routes.profile_path(@conn, :auth), fn f -> %>
+    <div class="mt-8 mb-3">
+      <%= text_input f, :username, placeholder: "A username", class: "border rounded px-4 py-1 w-full" %>
+      <span class="text-red-500">
+        <%= error_tag f, :username %>
+      </span>
+    </div>
+
+    <div class="mb-6">
+      <%= password_input f, :airtable_api_key, placeholder: "Airtable API key", class: "border rounded px-4 py-1 w-full" %>
+      <span class="text-red-500">
+        <%= error_tag f, :airtable_api_key %>
+      </span>
+    </div>
+
+    <%= submit "Sign in", class: "border-0 rounded bg-blue-500 text-white px-4 py-2" %>
+
+    <a href="<%= Routes.page_path(@conn, :index) %>">
+      <button type="button" class="border border-black rounded bg-white text-black px-4 py-2 ml-2">
+        Sign up
+      </button>
+    </a>
+    <% end %>
+
+  </div>
+</div>
