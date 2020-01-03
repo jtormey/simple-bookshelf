@@ -44,6 +44,7 @@ defmodule Bookshelf.MixProject do
       {:jason, "~> 1.0"},
       {:httpoison, "~> 1.6"},
       {:timex, "~> 3.6.1"},
+      {:edeliver, "~> 1.7.0"},
       {:distillery, "~> 2.1"},
       {:plug_cowboy, "~> 2.0"},
       {:basic_auth, "~> 2.2.3"}
