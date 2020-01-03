@@ -13,3 +13,5 @@ Deploy: `gcloud app deploy --project solar-vertex-259118`
 * Migrate database: `mix edeliver migrate production`
 
 Perform a cold release: `build`, `deploy`, (`migrate`?), `restart`
+
+Perform a hot upgrade: `mix edeliver upgrade production`
