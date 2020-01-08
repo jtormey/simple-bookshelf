@@ -4,7 +4,7 @@ defmodule BookshelfWeb.ProfileController do
   alias Bookshelf.{Accounts, Accounts.Account}
 
   def show(conn, _params) do
-    case conn.assigns.account do
+    case conn.assigns.session_account do
       nil ->
         conn
         |> put_flash(:info, "Please sign in to access your profile")
@@ -35,14 +35,14 @@ defmodule BookshelfWeb.ProfileController do
     |> Enum.filter(fn {_key, value} -> value != "" end)
     |> Map.new()
 
-    case Accounts.update_account(conn.assigns.account, attrs) do
+    case Accounts.update_account(conn.assigns.session_account, attrs) do
       {:ok, _account} ->
         conn
         |> put_flash(:info, "Updated profile")
         |> redirect(to: Routes.profile_path(conn, :show))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "profile.html", account: conn.assigns.account, changeset: changeset)
+        render(conn, "profile.html", account: conn.assigns.session_account, changeset: changeset)
     end
   end
 

@@ -9,14 +9,14 @@
 
     <%= form_for @conn, Routes.profile_path(@conn, :auth), fn f -> %>
     <div class="mt-8 mb-3">
-      <%= text_input f, :username, placeholder: "A username", class: "border rounded px-4 py-1 w-full" %>
+      <%= text_input f, :username, placeholder: "Your username", class: "border rounded px-4 py-1 w-full" %>
       <span class="text-red-500">
         <%= error_tag f, :username %>
       </span>
     </div>
 
     <div class="mb-6">
-      <%= password_input f, :airtable_api_key, placeholder: "Airtable API key", class: "border rounded px-4 py-1 w-full" %>
+      <%= password_input f, :airtable_api_key, placeholder: "Your Airtable API key", class: "border rounded px-4 py-1 w-full" %>
       <span class="text-red-500">
         <%= error_tag f, :airtable_api_key %>
       </span>

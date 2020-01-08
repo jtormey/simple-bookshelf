@@ -8,9 +8,9 @@ defmodule Plugs.AccountSession do
   def call(conn, _opts) do
     case get_session(conn, :account_id) do
       nil ->
-        assign(conn, :account, nil)
+        assign(conn, :session_account, nil)
       account_id ->
-        assign(conn, :account, Accounts.get_account(account_id))
+        assign(conn, :session_account, Accounts.get_account(account_id))
     end
   end
 end
