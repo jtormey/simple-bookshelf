@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <%= for %{"fields" => fields} <- books do %>
+      <%= for %{"fields" => fields} <- order_section(books, status) do %>
       <div class="relative lg:block flex flex-row border rounded bg-white px-4 py-2 mb-2">
 
         <div class="lg:w-full w-2/3 flex-grow flex lg:flex-row flex-col justify-between">
